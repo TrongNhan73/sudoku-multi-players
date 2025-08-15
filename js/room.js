@@ -22,11 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const handleCreateRoom = () => {
-    if (!isLogin()) {
-      showToast("Please log in to create a room", "error");
+    const username = document.getElementById("ipUserName").value.trim();
+    const roomeId = document.getElementById("ipIdRoom").value.trim();
+    if (username === "" || roomeId === "") {
+      showToast("Username and Room ID cannot be empty", "error");
       return;
     }
-    showToast("Room creation feature is not implemented yet", "success");
   };
 
   //add event listener

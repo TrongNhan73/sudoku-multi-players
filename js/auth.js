@@ -41,3 +41,17 @@ const firebaseLogout = async () => {
 const isLogin = () => {
   return auth.currentUser !== null;
 };
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    console.log("Đã đăng nhập lại:", user.displayName);
+    if (location.pathname === "/index.html" || location.pathname === "/") {
+      location.href = "room.html";
+    }
+  } else {
+    console.log("Chưa đăng nhập");
+    if (location.pathname !== "/") {
+      location.href = "/";
+    }
+  }
+});

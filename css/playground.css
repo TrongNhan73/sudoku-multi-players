@@ -1,0 +1,119 @@
+.container {
+  --border-weight-board: 5px;
+  --border-weight-cell: 1px;
+  --color-border-board: var(--yellow-color);
+  --color-border-cell: var(--light-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--dark-light-color);
+
+  & > #sudoku-container {
+    width: min(60vh, 60vw);
+    aspect-ratio: 1/1;
+    & > #players-score {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%; 
+      &>div {
+        flex: 0 0 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        overflow: hidden;
+        &>div:nth-child(1) {
+          text-align: center;
+          width: 100%;
+          text-overflow: ellipsis;
+          overflow: hidden;   
+          white-space: nowrap;
+        }
+      }
+    }
+    & > table {
+      margin-top: 20px;
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+      border: var(--border-weight-board) solid var(--color-border-board);
+      table-layout: fixed;
+      & > tbody {
+        width: 100%;
+        height: 100%;
+        & > tr {
+          width: 100%;
+          height: 11.11%;
+          &:nth-child(3n) {
+            border-bottom: var(--border-weight-board) solid
+              var(--color-border-board);
+          }
+          & > td {
+            width: 11.11%;
+            height: 11.11%;
+            position: relative;
+            border: var(--border-weight-cell) solid var(--color-border-cell);
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 2rem;
+            &:nth-child(3n) {
+              border-right: var(--border-weight-board) solid
+                var(--color-border-board);
+            }
+          }
+        }
+      }
+    }
+    & > #controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+      & > .number-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: blue;
+        overflow: hidden;
+        & > .number-background {
+          top: 100px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: repeating-conic-gradient(
+            from 0deg,
+            var(--yellow-color) 0deg 10deg,
+            var(--dark-color) 10deg 20deg
+          );
+          animation: rotate 2s linear infinite;
+        }
+        & > div:nth-child(2) {
+          position: relative;
+          background-color: rgb(20, 36, 36);
+          width: calc(100% - 2px);
+          height: calc(100% - 2px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
