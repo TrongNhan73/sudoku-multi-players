@@ -34,6 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (preRoom) {
         showLoading();
         const roomData = preRoom;
+        if (Object.keys(roomData.players).length >= 2) {
+          hideLoading();
+          showToast("Room is full, please choose another room ID", "error");
+          return;
+        }
         roomData.players[auth.currentUser.uid] = {
           name: username,
           score: 0,
