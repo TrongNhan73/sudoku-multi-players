@@ -47,12 +47,12 @@ auth.onAuthStateChanged((user) => {
   
   if (user) {
     console.log("Đã đăng nhập lại:", user.displayName);
-    if (location.pathname === preLocation+"/index.html" || location.pathname === preLocation+"/") {
+    if (location.href === preLocation+"/index.html" || location.pathname === preLocation+"/") {
       location.href = preLocation+"/room.html";
     }
   } else {
     console.log("Chưa đăng nhập");
-    if (location.pathname !== preLocation+"/") {
+    if (location.href !== preLocation+"/") {
       location.href = preLocation+"/";
     }
   }
