@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("controls").style.display = "none";
       db.ref(`rooms/${roomId}`).off();
       fbDeleteRoom(roomId);
-      window.location.href = preLocation + "/index.html";
+      window.location.href = preLocation + "/room.html";
     }
   };
 

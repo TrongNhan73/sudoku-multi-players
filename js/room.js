@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       const resultBoard = createEmptyGrid();
       fillGrid(resultBoard);
-      const currentBoard = removeCells(resultBoard, 1);
-      // const currentBoard = removeCells(resultBoard, 40);
+      // const currentBoard = removeCells(resultBoard, 1);
+      const currentBoard = removeCells(resultBoard, 40);
       const preRoom = await fbGetRoomData(roomeId);
       if (preRoom) {
         showLoading();
