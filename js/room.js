@@ -1,5 +1,3 @@
-// console.log(checkLogin());
-
 document.addEventListener("DOMContentLoaded", function () {
   //define
   const hanldeLogout = async () => {
@@ -21,12 +19,60 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const handleCreateRoom = () => {
+  const handleCreateRoom = async () => {
     const username = document.getElementById("ipUserName").value.trim();
     const roomeId = document.getElementById("ipIdRoom").value.trim();
     if (username === "" || roomeId === "") {
       showToast("Username and Room ID cannot be empty", "error");
       return;
+    } else {
+      const resultBoard = createEmptyGrid();
+      fillGrid(resultBoard);
+      const currentBoard = removeCells(resultBoard, 1);
+      // const currentBoard = removeCells(resultBoard, 40);
+      const preRoom = await fbGetRoomData(roomeId);
+      if (preRoom) {
+        showLoading();
+        const roomData = preRoom;
+        roomData.players[auth.currentUser.uid] = {
+          name: username,
+          score: 0,
+        };
+        roomData.status = "playing";
+        fbUpdateRoom(roomeId, roomData).then((result) => {
+          hideLoading();
+          if (result) {
+            showToast("Joined room successfully", "success");
+            window.location.href = `playground.html?roomId=${roomeId}`;
+          } else {
+            showToast("Failed to join room", "error");
+          }
+        });
+      } else {
+        showLoading();
+        const roomData = {
+          players: {
+            [auth.currentUser.uid]: {
+              name: username,
+              score: 0,
+            },
+          },
+          board: {
+            currentBoard: boardToObject(currentBoard),
+            resultBoard: boardToObject(resultBoard),
+          },
+          status: "waiting",
+        };
+        const result = await fbCreateRoom(roomeId, roomData);
+        if (result) {
+          hideLoading();
+          showToast("Room created successfully", "success");
+          window.location.href = `playground.html?roomId=${roomeId}`;
+        } else {
+          hideLoading();
+          showToast("Failed to create room", "error");
+        }
+      }
     }
   };
 

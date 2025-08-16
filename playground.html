@@ -4,22 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/toastify.css" />
     <link rel="stylesheet" href="css/playground.css" />
     <title>Sudoku Playround</title>
   </head>
   <body>
     <div class="container">
-      <h1>Sudoku Playround</h1>
+      <!-- <h1>Sudoku Playround</h1> -->
 
       <div id="sudoku-container">
         <div id="players-score">
-          <div>
-            <div id="player1-name">Player 1afdfafPlayer 1afdfafPlayer 1afdfafPlayer 1afdfaf</div>
-            <div id="player1-score">0</div>
+          <div class="player">
+            <div id="player-name">Player 1afdfafPlayer 1afdfafPlayer 1afdfafPlayer 1afdfaf</div>
+            <div id="player-score">0</div>
           </div>
-          <div>
-            <div id="player2-name">Player 2</div>
-            <div id="player2-score">0</div>
+          <div class="player">
+            <div id="player-name">Player 2</div>
+            <div id="player-score">0</div>
           </div>
         </div>
         <table id="sudoku-board" cellspacing="0" cellpadding="5">
@@ -128,44 +129,57 @@
         <div id="controls">
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number1">1</div>
+            <div class="number">1</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number2">2</div>
+            <div class="number">2</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number3">3</div>
+            <div class="number">3</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number4">4</div>
+            <div class="number">4</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number5">5</div>
+            <div class="number">5</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number6">6</div>
+            <div class="number">6</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number7">7</div>
+            <div class="number">7</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number8">8</div>
+            <div class="number">8</div>
           </div>
           <div class="number-container">
             <div class="number-background"></div>
-            <div class="number9">9</div>
+            <div class="number">9</div>
           </div>
         </div>
       </div>
 
-      <div id="game-status"></div>
+      <div class="container-loading">
+        <div class="loading"></div>
+        <div class="text"></div>
+      </div>
+    
     </div>
+    <script src="js/toastify.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/sudoku.js"></script>
+    <script src="js/playground.js"></script>
   </body>
 </html>
