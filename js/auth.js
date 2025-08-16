@@ -1,4 +1,5 @@
-const preLocation = 'https://trongnhan73.github.io/sudoku-multi-players';
+// const preLocation = "http://localhost:8080";
+const preLocation = "https://trongnhan73.github.io/sudoku-multi-players";
 const firebaseRegisterWithEmailPassword = async (email, password) => {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
@@ -44,16 +45,24 @@ const isLogin = () => {
 };
 
 auth.onAuthStateChanged((user) => {
-  
+  console.log(
+    location.href === preLocation + "/index.html" ||
+      location.pathname === preLocation + "/" ||
+      location.pathname === preLocation
+  );
   if (user) {
     console.log("Đã đăng nhập lại:", user.displayName);
-    if (location.href === preLocation+"/index.html" || location.pathname === preLocation+"/") {
-      location.href = preLocation+"/room.html";
+    if (
+      location.href === preLocation + "/index.html" ||
+      location.href === preLocation + "/" ||
+      location.href === preLocation
+    ) {
+      location.href = preLocation + "/room.html";
     }
   } else {
     console.log("Chưa đăng nhập");
-    if (location.href !== preLocation+"/") {
-      location.href = preLocation+"/";
+    if (location.href !== preLocation + "/") {
+      location.href = preLocation + "/";
     }
   }
 });
