@@ -59,7 +59,7 @@ addEventListener("DOMContentLoaded", () => {
       document.getElementById("ipEmail").value = "";
       document.getElementById("ipPassword").value = "";
       hideLoading();
-      location.href = "room.html";
+      location.href = preLocation+"/room.html";
     } else {
       showToast("Registration failed", "error");
       hideLoading();
@@ -108,7 +108,7 @@ addEventListener("DOMContentLoaded", () => {
       document.getElementById("ipEmail").value = "";
       document.getElementById("ipPassword").value = "";
       hideLoading();
-      location.href = "room.html";
+      location.href = preLocation+"/room.html";
     } else {
       showToast("Login failed", "error");
       hideLoading();
@@ -122,7 +122,7 @@ addEventListener("DOMContentLoaded", () => {
     if (result) {
       showToast("Google login successful", "success");
       hideLoading();
-      location.href = "room.html";
+      location.href = preLocation+"/room.html";
     } else {
       showToast("Google login failed", "error");
       hideLoading();

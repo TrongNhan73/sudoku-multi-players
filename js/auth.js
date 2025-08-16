@@ -1,3 +1,4 @@
+const preLocation = 'https://trongnhan73.github.io/sudoku-multi-players';
 const firebaseRegisterWithEmailPassword = async (email, password) => {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
@@ -43,15 +44,16 @@ const isLogin = () => {
 };
 
 auth.onAuthStateChanged((user) => {
+  
   if (user) {
     console.log("Đã đăng nhập lại:", user.displayName);
-    if (location.pathname === "/index.html" || location.pathname === "/") {
-      location.href = "room.html";
+    if (location.pathname === preLocation+"/index.html" || location.pathname === preLocation+"/") {
+      location.href = preLocation+"/room.html";
     }
   } else {
     console.log("Chưa đăng nhập");
-    if (location.pathname !== "/") {
-      location.href = "/";
+    if (location.pathname !== preLocation+"/") {
+      location.href = preLocation+"/";
     }
   }
 });

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result) {
           hideLoading();
           showToast("Logout successful", "success");
-          window.location.href = "index.html";
+          window.location.href = preLocation + "/index.html";
         } else {
           hideLoading();
           showToast("Logout failed", "error");
@@ -43,7 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
           hideLoading();
           if (result) {
             showToast("Joined room successfully", "success");
-            window.location.href = `playground.html?roomId=${roomeId}`;
+            window.location.href =
+              preLocation + `/playground.html?roomId=${roomeId}`;
           } else {
             showToast("Failed to join room", "error");
           }
@@ -67,7 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result) {
           hideLoading();
           showToast("Room created successfully", "success");
-          window.location.href = `playground.html?roomId=${roomeId}`;
+          window.location.href =
+            preLocation + `/playground.html?roomId=${roomeId}`;
         } else {
           hideLoading();
           showToast("Failed to create room", "error");

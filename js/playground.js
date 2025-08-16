@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleListener = (dataRoom) => {
     if (!dataRoom) {
       alert("Room not found or has been deleted!");
-      window.location.href = "index.html";
+      window.location.href = preLocation+"/index.html";
       return;
     }
     console.log("Data Room:", dataRoom);
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       document.getElementById("controls").style.display = "none";
       fbDeleteRoom(roomId);
-      window.location.href = "index.html";
+      window.location.href = preLocation+"/index.html";
     }
   };
 
@@ -147,6 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fbListenToRoomChanges(roomId, handleListener);
   } else {
     alert("Room ID is missing!");
-    window.location.href = "index.html";
+    window.location.href = preLocation+"/index.html";
   }
 });
